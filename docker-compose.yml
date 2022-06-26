@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  api:
+    image: deepface-api
+    container_name: deepface-api
+    build: .
+    command: bash -c "python load.py && flask run -h 0.0.0.0"
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env

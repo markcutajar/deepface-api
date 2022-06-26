@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  api:
+    image: deepface-api
+    container_name: deepface-api
+    build: .
+    command: bash -c "python load.py && gunicorn --bind 0.0.0.0:5000 run:app"
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.prod
